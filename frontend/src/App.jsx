@@ -2,8 +2,10 @@ import React from 'react'
 import {Home, Result,Price} from './pages/index'
 import { Routes, Route } from 'react-router-dom'
 import {Header,Footer} from './components/index'
+import { useEffect } from 'react'
 
 const App = () => {
+  
   return (
     <div className='bg-slate-100 min-h-screen'>
       <Header/>

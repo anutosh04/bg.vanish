@@ -1,17 +1,9 @@
 import React from 'react'
 
-const Plan = () => {
+const Price = () => {
   return (
-    <div className='w-full flex justify-centre'>
-
-      <div>
-        <div>
-          hege
-        </div>
-      </div>
-
-    </div>
+    <div>Price</div>
   )
 }
 
-export default Plan
+export default Price
