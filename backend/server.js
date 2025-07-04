@@ -26,6 +26,6 @@ app.get('/', (req,res)=> res.send("server live"))
 app.use('/api/user', userRouter)
 app.use('/api/bg',imageRouter)
 
-
+app.listen(PORT)
 
 export default app;
