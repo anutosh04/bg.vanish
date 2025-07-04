@@ -18,10 +18,7 @@ const upload = multer({ dest: path.join(__dirname, 'uploads/') });
 dotenv.config();
 const PORT = process.env.PORT || 3000;
 const app = express();
-app.use(cors({
-  origin: `${process.env.FRONTEND_URL}`
-
-}));
+app.use(cors({ origin: process.env.FRONTEND_URL }));
 app.use(express.json());
 connectDB();
 
@@ -29,18 +26,6 @@ app.get('/', (req,res)=> res.send("server live"))
 app.use('/api/user', userRouter)
 app.use('/api/bg',imageRouter)
 
-app.post('/upload', upload.single('image'), async (req,res)=>{
-    try {
-    const result = await cloudinary.uploader.upload(req.file.path, {
-      e_background_removal: 'cloudinary_ai',
-    });
-
-    res.json({ url: result.secure_url });
-  } catch (error) {
-    console.error('Upload error:', error);
-    res.status(500).json({ error: 'Upload failed' });
-  }
-})
 
 
 export default app;
