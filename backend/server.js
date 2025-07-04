@@ -18,7 +18,10 @@ const upload = multer({ dest: path.join(__dirname, 'uploads/') });
 dotenv.config();
 const PORT = process.env.PORT || 3000;
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: `${process.env.FRONTEND_URL}`
+
+}));
 app.use(express.json());
 connectDB();
 
