@@ -27,6 +27,6 @@ app.use('/api/user', userRouter)
 app.use('/api/bg',imageRouter)
 
 app.listen(PORT, () => {
-  console.log(`Example app listening on port ${port}`)
+  console.log(`Example app listening on port ${PORT}`)
 })
 export default app;
