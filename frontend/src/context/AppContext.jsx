@@ -1,4 +1,4 @@
-import { Children, createContext, useContext, useEffect, useState } from "react"
+import { Children, createContext, useContext, useEffect, useState, useMemo } from "react"
 import useRegister from "../hooks/useRegister"
 import  {useNavigate} from 'react-router-dom'
 import axios from "axios"
@@ -44,17 +44,17 @@ const AppContextProvider = ({children})=>{
             navigate('/')
         }
     }
-    
-    const value = {
-        authUser,
-        image,
-        setImage,
-        resultImage,
-        setResultImage,
-        removeBg,
-        alert,
-        setAlert
-    }
+    const value = useMemo(() => ({
+  authUser,
+  image,
+  setImage,
+  resultImage,
+  setResultImage,
+  removeBg,
+  alert,
+  setAlert,
+  setAuthUser, // include this too!
+}), [authUser, image, resultImage, alert]);
     
     
 
