@@ -11,7 +11,7 @@ const useRegister = ()=>{
             if(!user)
                 return null;
             try {
-                const req = await fetch(`${import.meta.env.BACKEND_URL}/api/user/register`,{
+                const req = await fetch(`${import.meta.env.VITE_BACKEND_URL}/api/user/register`,{
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
