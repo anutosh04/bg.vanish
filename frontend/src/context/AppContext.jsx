@@ -28,7 +28,7 @@ const AppContextProvider = ({children})=>{
             const formdata= new FormData()
             formdata.append('image',imageFile);
             formdata.append('clerkId',authUser.clerkId)          
-            const {data} = await axios.post(`${import.meta.env.BACKEND_URL}/api/bg/remove`,formdata,{
+            const {data} = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/bg/remove`,formdata,{
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 }
