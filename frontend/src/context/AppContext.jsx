@@ -35,7 +35,7 @@ const AppContextProvider = ({children})=>{
             })
             if(data){
                 setResultImage(data.resultImage)
-                setAuthUser(data.updatedUser)
+                setAuthUser({...data.updatedUser})
                 setImage(imageFile)
             }
             navigate('/result')
