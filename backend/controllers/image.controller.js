@@ -19,8 +19,6 @@ const removeBg= async(req,res)=>{
         
         const imagePath = req.file.path
 
-        console.log(clerkId);
-        console.log(imagePath);
         
         
         const imageFile = fs.createReadStream(imagePath)
@@ -36,8 +34,10 @@ const removeBg= async(req,res)=>{
 
         const base64 = Buffer.from(data,'binary').toString('base64')
         const resultImage = `data:${req.file.mimetype};base64,${base64}`
-
-        const updatedUser = await User.findByIdAndUpdate(user._id,{creditBalance:user.creditBalance-1})
+        const currentBalance= user.creditBalance
+        const updatedUser = await User.findByIdAndUpdate(user._id,{creditBalance:currentBalance-1})
+        console.log(updatedUser);
+        
 
         res.json({resultImage,updatedUser})
         

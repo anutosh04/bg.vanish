@@ -1,3 +1,4 @@
+
 import { Children, createContext, useContext, useEffect, useState, useMemo } from "react"
 import useRegister from "../hooks/useRegister"
 import  {useNavigate} from 'react-router-dom'
@@ -35,7 +36,9 @@ const AppContextProvider = ({children})=>{
             })
             if(data){
                 setResultImage(data.resultImage)
-                setAuthUser({...data.updatedUser})
+                setAuthUser(data.updatedUser)
+                console.log(data.updatedUser);
+                
                 setImage(imageFile)
             }
             navigate('/result')
@@ -44,7 +47,7 @@ const AppContextProvider = ({children})=>{
             navigate('/')
         }
     }
-    const value = useMemo(() => ({
+    const value = {
   authUser,
   image,
   setImage,
@@ -53,9 +56,8 @@ const AppContextProvider = ({children})=>{
   removeBg,
   alert,
   setAlert,
-  setAuthUser, // include this too!
-}), [authUser, image, resultImage, alert]);
-    
+  setAuthUser,
+}    
     
 
     return(
