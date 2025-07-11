@@ -14,13 +14,7 @@ const removeBg= async(req,res)=>{
             console.log("user not found");
             return;
         }
-
-        
-        
         const imagePath = req.file.path
-
-        
-        
         const imageFile = fs.createReadStream(imagePath)
         const formData= new FormData()
         formData.append('image_file',imageFile)
@@ -35,7 +29,10 @@ const removeBg= async(req,res)=>{
         const base64 = Buffer.from(data,'binary').toString('base64')
         const resultImage = `data:${req.file.mimetype};base64,${base64}`
         const currentBalance= user.creditBalance
-        const updatedUser = await User.findByIdAndUpdate(user._id,{creditBalance:currentBalance-1})
+        const creditUpdateUser = await User.findByIdAndUpdate(user._id,{creditBalance:currentBalance-1})
+        
+        const updatedUser = await User.findOne({clerkId})
+        
         console.log(updatedUser);
         
 
@@ -51,3 +48,4 @@ const removeBg= async(req,res)=>{
 
 
 export {removeBg}
+
